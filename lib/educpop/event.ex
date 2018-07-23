@@ -22,5 +22,8 @@ defmodule Educpop.Event do
   def changeset(event, attrs) do
     event
     |> cast(attrs, [:name, :start_at, :end_at, :description, :location, :address, :original_url])
+    |> validate_required([:name, :start_at, :location])
+    |> validate_length(:name, min: 3)
+    |> validate_length(:location, min: 3)
   end
 end
